@@ -1,0 +1,6 @@
+package webstore
+
+class WishListController{
+
+}
+
