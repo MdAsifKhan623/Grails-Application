@@ -7,10 +7,10 @@
         <center>
         <h1>Login</h1>
         <br/>
-        <g:form action="save">
-            <g:textField placeholder="User Name" name="customerName" /><br /><br />
-            <g:textField placeholder="Password" name="password" /><br /><br />
-            <g:actionSubmit value="Login"/>
+        <g:form action="find">
+            <g:textField placeholder="User Name" name="emailId" /><br /><br />
+            <g:passwordField placeholder="Password"  name="customerPassword" /><br /><br />
+            <g:actionSubmit value="Find"/>
         </g:form>
         </center>
     </body>

@@ -10,8 +10,8 @@
         <br/>
          <g:form action="find">
              <g:textField placeholder="User Name" name="adminName" /><br /> <br />
-             <g:textField placeHolder="Password "name="password" /><br /> <br />
-             <g:actionSubmit value="Login"/>
+             <g:passwordField placeHolder="Password "name="password" /><br /> <br />
+             <g:actionSubmit value="Find"/>
          </g:form>
 
         </center>

@@ -6,13 +6,18 @@ class AdminController{
 
     def index() {
 //        redirect action: "login"
+    }
+
+    def credentials(){
 
     }
     def find(Admin adminData){
-        if (adminData.adminName != Null){
-            println(adminData.adminName)
-        }
-        redirect action: "list"
+        def admins=Admin.list()
+        admins.each{adm-> if(adm.adminName==adminData.adminName && adm.password==adminData.password){
+            redirect action:"list"
+        }else{
+            redirect action:"credentials"
+        } }
     }
 
     def login(Admin adminData){
@@ -34,12 +39,13 @@ class AdminController{
         [products:product]
 
     }
-    def update(Products products) {
+    def update() {
 
-        println(products.productType)
-
-        products.save failOnError: true
-        redirect action: "show", id: products.id
+        def product = Products.get(params.id)
+        product.properties = params
+        println(product.productName)
+        product.save failOnError: true
+        redirect action: "show", id: product.id
 
     }
     def show(Products product) {
@@ -54,7 +60,6 @@ class AdminController{
     def delete() {
         def product = Products.get(params.id)
         product.delete failOnError: true
-        redirect action: "list"
     }
 
 }

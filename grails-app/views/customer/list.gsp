@@ -4,19 +4,20 @@
     </head>
     <body>
         <center>
-        <h1>Welcome to the Store Admin</h1>
+        <h1>List of Products</h1>
+        <h2>Welcome ${customers.customerName}. Check the Products.</h2>
         <g:each in="${products}" var="product">
 
             Name: ${product.productName}<br />
             Product Type: ${product.productType}<br />
             Price: ${product.price}<br />
 
-            <g:link action="edit"
-               id="${product.id}">Edit</g:link><br />
-            <g:link action="delete"
-               id="${product.id}">Delete</g:link><br /><br />
+            <g:link action="add"
+               id="${product.id}">Add To Cart</g:link><br />
+
+            <g:link action="wish"
+               id="${customers.id}">Add to WishList</g:link><br /><br />
         </g:each>
-        <g:link action="create">Add New Products</g:link>
         </center>
     </body>
 </html>
