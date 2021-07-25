@@ -1,43 +1,60 @@
 package webstore
 
+import javax.validation.constraints.Null
+
 class AdminController{
 
     def index() {
+//        redirect action: "login"
+
+    }
+    def find(Admin adminData){
+        if (adminData.adminName != Null){
+            println(adminData.adminName)
+        }
         redirect action: "list"
     }
-    def create() {}
-    def save(Admin admin) {
 
-        admin.save flush:true, failOnError:true
-        redirect action:"show", id: admin.id
+    def login(Admin adminData){
+        def admin=Admin.list()
+        admin.each{adm-> println(adm.adminName+" "+adm.password)}
+    }
+
+    def create() {}
+
+    def save(Products product) {
+
+        product.save failOnError:true
+        redirect action:"show", id: product.id
 
     }
     def edit() {
 
-        def product= Products.get(params.productId)
-        [product:Products]
+        def product= Products.get(params.id)
+        [products:product]
 
     }
-    def update() {
+    def update(Products products) {
 
-        def product = Products.get(params.productId)
-        product.properties = params
-        product.save flush: true, failOnError: true
-        redirect action: "show", id: params.productId
+        println(products.productType)
+
+        products.save failOnError: true
+        redirect action: "show", id: products.id
 
     }
-    def show() {
-        def product = Products.get(params.productId)
-        [product: Products]
+    def show(Products product) {
+//        def product = Products.get(params.productId)
+        [products: product]
     }
     def list() {
-        def product = Products.list()
-        [product:Products]
+
+        def products = Products.list()
+        [products:products]
     }
     def delete() {
-        def product = Products.get(params.productId)
-        product.delete flush: true, failOnError: true
-        redirect action: "index"
+        def product = Products.get(params.id)
+        product.delete failOnError: true
+        redirect action: "list"
     }
 
 }

@@ -10,6 +10,13 @@ buildscript {
     }
 }
 
+apply plugin:"idea"
+apply plugin:"org.grails.grails-plugin"
+
+springBoot{
+    mainClassName ='webstore.Application'
+}
+
 version "0.1"
 group "webstore"
 
